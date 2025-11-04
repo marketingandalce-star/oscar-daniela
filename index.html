@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Boda de Daniela & Óscar</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Montserrat:wght@300;400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <header class="hero-section">
+        <div class="overlay"></div>
+        <div class="hero-content">
+            <p class="small-text">Boda</p>
+            <h1>DANIELA SANDOVAL</h1>
+            <h2>Y ÓSCAR GAYTÁN</h2>
+            <p class="date-time">26 de diciembre de 2025 | 05:00 pm</p>
+        </div>
+    </header>
+
+    <section class="countdown-section">
+        <h3>¡El Gran Día Se Acerca!</h3>
+        <div id="countdown" class="countdown-timer">
+            <div><span id="days"></span> Días</div>
+            <div><span id="hours"></span> Horas</div>
+            <div><span id="minutes"></span> Minutos</div>
+            <div><span id="seconds"></span> Segundos</div>
+        </div>
+    </section>
+
+    <hr>
+
+    <section class="details-section">
+        <div class="detail-block">
+            <h3>📍 Ceremonia y Recepción</h3>
+            <p><strong>Fecha:</strong> 26 de diciembre de 2025</p>
+            <p><strong>Hora:</strong> 5:00 pm</p>
+            <p><strong>Lugar:</strong> Ejido La Libertad</p>
+            <p>Torreón, Coahuila, México. Atrás del Col. Americ La Libertad cp 27403</p>
+        </div>
+
+        <div class="detail-block rsvp-block">
+            <h3>📅 Confirmación / Agendar</h3>
+            <p>Agrega el evento a tu calendario para que no lo olvides.</p>
+            <a href="#" id="addToCalendarBtn" class="button primary">Agregar al Calendario</a>
+        </div>
+        
+        <div class="detail-block no-children-note">
+            <h3>Importante</h3>
+            <p class="warning-text">Agradecemos tu presencia sin niños.</p>
+        </div>
+    </section>
+
+    <hr>
+
+    <section class="map-section">
+        <h3>🗺️ Cómo Llegar</h3>
+        <p>Ejido La Libertad, Torreón, Coahuila.</p>
+        <div class="map-container">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d14393.274572815559!2d-103.39010945!3d25.5943259!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x868fd915b26d2ac9%3A0x535e1531cd2c974a!2sEjido%20la%20Libertad%2C%20Torre%C3%B3n%2C%20Coah.!5e0!3m2!1ses!2smx!4v1762206739831!5m2!1ses!2smx" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+    </section>
+
+    <hr>
+
+    <section class="gallery-section">
+        <h3>📸 Nuestra Historia en Imágenes</h3>
+        <div class="gallery-grid">
+            <img src="foto_1.jpg" alt="Foto 1 de la pareja" onclick="openModal('foto_1.jpg')">
+            <img src="foto_2.jpg" alt="Foto 2 de la pareja" onclick="openModal('foto_2.jpg')">
+            <img src="foto_3.jpg" alt="Foto 3 de la pareja" onclick="openModal('foto_3.jpg')">
+            <img src="foto_4.jpg" alt="Foto 4 de la pareja" onclick="openModal('foto_4.jpg')">
+            <img src="foto_5.jpg" alt="Foto 5 de la pareja" onclick="openModal('foto_5.jpg')">
+            <img src="foto_6.jpg" alt="Foto 6 de la pareja" onclick="openModal('foto_6.jpg')">
+            <img src="foto_7.jpg" alt="Foto 7 de la pareja" onclick="openModal('foto_7.jpg')">
+            <img src="foto_8.jpg" alt="Foto 8 de la pareja" onclick="openModal('foto_8.jpg')">
+            <img src="foto_9.jpg" alt="Foto 9 de la pareja" onclick="openModal('foto_9.jpg')">
+            <img src="foto_10.jpg" alt="Foto 10 de la pareja" onclick="openModal('foto_10.jpg')">
+        </div>
+        
+        <div id="imageModal" class="modal" onclick="closeModal()">
+            <span class="close">&times;</span>
+            <img class="modal-content" id="img01">
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2025 Daniela & Óscar. ¡Los esperamos!</p>
+    </footer>
+
+    <script>
+        // 1. Contador de Cuenta Regresiva
+        // Establecer la fecha de la boda (Año, Mes-1, Día, Hora, Minuto, Segundo)
+        const weddingDate = new Date("Dec 26, 2025 17:00:00").getTime();
+
+        const countdownFunction = setInterval(function() {
+            const now = new Date().getTime();
+            const distance = weddingDate - now;
+
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            document.getElementById("days").innerHTML = days;
+            document.getElementById("hours").innerHTML = hours;
+            document.getElementById("minutes").innerHTML = minutes;
+            document.getElementById("seconds").innerHTML = seconds;
+
+            if (distance < 0) {
+                clearInterval(countdownFunction);
+                document.getElementById("countdown").innerHTML = "¡Ya Estamos Casados!";
+            }
+        }, 1000);
+
+        // 2. Galería de Fotos (Modal)
+        const modal = document.getElementById("imageModal");
+        const modalImg = document.getElementById("img01");
+
+        function openModal(imageSrc) {
+            modal.style.display = "block";
+            modalImg.src = imageSrc;
+        }
+
+        function closeModal() {
+            modal.style.display = "none";
+        }
+
+        // 3. Agregar al Calendario (Google Calendar/ICS)
+        document.getElementById('addToCalendarBtn').addEventListener('click', function(e) {
+            e.preventDefault();
+            // Formato de fecha para Google Calendar (YYYYMMDDTHHMMSS) y duración de 3 horas
+            const startEvent = "20251226T170000";
+            const endEvent = "20251226T200000"; 
+            const title = "Boda de Daniela Sandoval y Óscar Gaytán";
+            const details = "¡Te esperamos en nuestra boda!";
+            const location = "Ejido La Libertad, Torreón, Coahuila, México. Atrás del Col. Americ La Libertad cp 27403";
+
+            // Enlace para Google Calendar
+            const googleCalendarLink = `https://www.google.com/calendar/render?action=TEMPLATE&text=${encodeURIComponent(title)}&dates=${startEvent}/${endEvent}&details=${encodeURIComponent(details)}&location=${encodeURIComponent(location)}`;
+
+            // Abre el enlace en una nueva pestaña
+            window.open(googleCalendarLink, '_blank');
+        });
+
+    </script>
+</body>
+</html>
