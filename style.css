@@ -36,7 +36,7 @@ h3 { font-size: 2rem; color: var(--primary-color); }
     align-items: center;
     justify-content: center;
     text-align: center;
-    background-image: url('fondo_boda.jpg'); /* ¡Cambia esto por tu imagen! */
+    background-image: url(fondo_boda.jpg); /* ¡Cambia esto por tu imagen! */
     background-size: cover;
     background-position: center;
     color: var(--text-light);
